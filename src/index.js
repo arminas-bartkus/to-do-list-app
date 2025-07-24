@@ -1,6 +1,32 @@
 import "./css/styles.css";
 import "./css/reset.css"
 
+import { addNewProject } from "./js/addNewProject";
+
+const toDoListController = (function() {
+
+const newProject = {
+    projectTitle: "",
+    subHeadingTitles: [],
+    taskTitles: [],
+}
+
+function addListeners() {
+    
+    const addNewProjectBtn = document.querySelector(".add-project-btn");
+
+    addNewProjectBtn.addEventListener("click", function() {
+
+            const inputtedTitle = prompt("enterProjectName", "Default")
+            addNewProject(inputtedTitle);
+    });
+
+}
+
+addListeners()
+
+
+})();
 
 class ToDoTask {
     
@@ -11,12 +37,6 @@ class ToDoTask {
             this.dueDate = dueDate;
             this.priorityLvl = priorityLvl;
         }
-}
-
-class Project {
-    constructor(title) {
-        this.title = title;
-    }
 }
 
 class SubHeading {
