@@ -6,4 +6,6 @@ class Project {
 
 export function addNewProject(title) {
     let newProject = new Project(title);
+
+    return newProject
 }

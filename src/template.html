@@ -25,6 +25,8 @@
 
 
     <div class="current-project-body">
+        
+        <button type="button" class = "add-task">Add task</button>
         <h1 class = "list-title">CLEANING THE HOUSE</h1>
 
 
@@ -58,6 +60,25 @@
         </ul>
 
     </div>
+
+
+    <dialog mode = "modal" class = "add-task-modal">
+
+        <label for="taskTitle">Task Title:</label>
+        <input type="text" name="taskTitleInput" id="taskTitle">
+
+         <label for="taskDesc">Task Desc:</label>
+        <input type="textarea" name="taskDescInput" id="taskDesc">
+
+         <label for="taskDueDate">Task Due Date:</label>
+        <input type="text" name="taskDueDateInput" id="taskDueDate">
+
+         <label for="taskPriorityLvl">Task Priority Level:</label>
+        <input type="number" name="taskPrioLvlInput" id="taskPriorityLvl">
+
+        <button type="button" class = "confirm-task-button">Add Task</button>
+
+    </dialog>
 
 </body>
 </html>
