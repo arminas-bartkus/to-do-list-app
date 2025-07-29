@@ -1,9 +1,14 @@
+import { currentProjects } from "../index";
+import { renderProjectHeading } from "./renderProjectHeading";
 
-const projectBody = document.querySelector(".current-project-body");
 
-export function renderSubHeadings(project) {
+export function renderSubHeadings(newWorkingProject) {
     
-    project.subHeadings.forEach(subHeading => {
+    const projectBody = document.querySelector(".current-project-body");
+
+    let workingProject = newWorkingProject;
+
+    workingProject.subHeadings.forEach(subHeading => {
         
     const subHeadingDiv = document.createElement("div");
 

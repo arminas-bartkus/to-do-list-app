@@ -40,7 +40,6 @@ const projectBody = document.querySelector(".current-project-body");
         workingProject.subHeadings.push(createdSubHeading);
 
         renderSubHeadings(workingProject);
-        console.log(workingProject)
     });
 
     titleDiv.appendChild(addSubHeadingBtn);
@@ -63,11 +62,10 @@ const projectBody = document.querySelector(".current-project-body");
     goToProjectBtn.addEventListener("click", function() {
 
         const project = goToProjectBtn.classList.value;
-        renderExistingProject(project);
-        return project
+        renderExistingProject(project, workingProject);
     });
 
-return workingProject
+return {workingProject}
 
 
 }
