@@ -15,6 +15,7 @@ body {
     border: solid blue;
     display: flex;
     grid-area: 1 / 2 / 3 / 3;
+    flex-direction: column;
 
 }
 

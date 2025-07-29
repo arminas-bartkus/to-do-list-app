@@ -10,7 +10,8 @@ class ToDoTask {
 };
 
 
-export function addTaskToList(taskTitle, taskDesc, dueDate, priorityLvl) {
+export function createTask(taskTitle, taskDesc, dueDate, priorityLvl) {
     let newTask = new ToDoTask(taskTitle, taskDesc, dueDate, priorityLvl);
 
+    return newTask;
 } 

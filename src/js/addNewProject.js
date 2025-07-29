@@ -5,7 +5,13 @@ class Project {
 }
 
 export function addNewProject(title) {
-    let newProject = new Project(title);
+    let newProjectTitle = new Project(title);
+    const newProject = {
+        projectTitle: newProjectTitle.title,
+        subHeadings: [],
+        tasks: [],
+        
+    }
 
     return newProject
 }

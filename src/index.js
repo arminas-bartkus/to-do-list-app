@@ -2,27 +2,25 @@ import "./css/styles.css";
 import "./css/reset.css"
 
 import { addNewProject } from "./js/addNewProject";
-import { addTaskToList } from "./js/addTaskToList";
-
-const toDoListController = (function() {
-
+import { createTask } from "./js/createTask";
+import { renderProjectHeading } from "./js/renderProjectHeading"
+import { renderTasks } from "./js/renderTasks"
 
 let currentProjects = [];
 
-const newProject = {
-    projectTitle: "",
-    subHeadingTitles: [],
-    tasks: [],
-}
+(function() {
 
 function addListeners() {
+
+    // buttons
     
     const addNewProjectBtn = document.querySelector(".add-project-btn");
-    const addTaskBtn = document.querySelector(".add-task");
     const confirmAddTaskBtn = document.querySelector(".confirm-task-button")
 
-
     const addTaskModal = document.querySelector(".add-task-modal");
+
+
+    // modal inputs
 
     const taskTitleInput = document.querySelector("#taskTitle");
     const taskDescInput = document.querySelector("#taskDesc");
@@ -31,29 +29,28 @@ function addListeners() {
 
     addNewProjectBtn.addEventListener("click", function() {
 
-        const inputtedTitle = prompt("enterProjectName", "Default")
+        const inputtedTitle = prompt("Enter Project Title:", "Default")
         const projectToAdd = addNewProject(inputtedTitle);
         currentProjects.push(projectToAdd);
-    });
-
-    addTaskBtn.addEventListener("click", function() {
-        addTaskModal.showModal();
+        
+        renderProjectHeading(inputtedTitle);
     });
 
     confirmAddTaskBtn.addEventListener("click", function() {
-        addTaskModal.close()
+        
+        addTaskModal.close();
 
-        addTaskToList(
+        const newTask = createTask(
             taskTitleInput.value, 
             taskDescInput.value, 
             taskDueDateInput.value, 
             taskPriorityLvlInput.value);
 
-        
+            currentProjects[0].tasks.push(newTask);
 
-
-    });
-            
+            renderTasks(newTask)
+                
+            });
 
 }
 
@@ -61,3 +58,5 @@ addListeners()
 
 
 })();
+
+export {currentProjects}
