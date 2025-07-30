@@ -1,6 +1,7 @@
 import { renderProjectHeading } from "./renderProjectHeading";
 import { currentProjects } from "..";
 import { renderSubHeadings } from "./renderSubHeadings";
+import { renderTasks } from "./renderTasks";
 
 
 export function renderExistingProject(projectName, workingProject) {
@@ -12,7 +13,7 @@ export function renderExistingProject(projectName, workingProject) {
     }
     renderProjectHeading(projectName);
     renderSubHeadings(workingProject);
-
+    renderTasks(workingProject);
 
 
 }

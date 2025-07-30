@@ -5,6 +5,7 @@ import { addNewProject } from "./js/addNewProject";
 import { createTask } from "./js/createTask";
 import { renderProjectHeading } from "./js/renderProjectHeading"
 import { renderTasks } from "./js/renderTasks"
+import { workingProject } from "./js/renderSubHeadings";
 
 let currentProjects = [];
 
@@ -39,16 +40,16 @@ function addListeners() {
     confirmAddTaskBtn.addEventListener("click", function() {
         
         addTaskModal.close();
-
+        
         const newTask = createTask(
             taskTitleInput.value, 
             taskDescInput.value, 
             taskDueDateInput.value, 
             taskPriorityLvlInput.value);
 
-            currentProjects[0].tasks.push(newTask);
+            workingProject.tasks.push(newTask);
 
-            renderTasks(newTask)
+            renderTasks(workingProject)
                 
             });
 

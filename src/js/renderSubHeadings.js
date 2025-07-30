@@ -1,12 +1,13 @@
 import { currentProjects } from "../index";
 import { renderProjectHeading } from "./renderProjectHeading";
 
+let workingProject
 
 export function renderSubHeadings(newWorkingProject) {
     
     const projectBody = document.querySelector(".current-project-body");
 
-    let workingProject = newWorkingProject;
+    workingProject = newWorkingProject;
 
     workingProject.subHeadings.forEach(subHeading => {
         
@@ -20,6 +21,7 @@ export function renderSubHeadings(newWorkingProject) {
     const addTaskBtn = document.createElement("button");
     addTaskBtn.innerHTML = "Add Task";
     subHeadingDiv.appendChild(addTaskBtn);
+    addTaskBtn.classList.add(subHeading.title);
     
     addTaskBtn.addEventListener("click", function() {
         const addTaskModal = document.querySelector(".add-task-modal");
@@ -30,6 +32,8 @@ export function renderSubHeadings(newWorkingProject) {
     
  });
 
+
 };
 
+export { workingProject }
 

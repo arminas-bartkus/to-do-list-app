@@ -65,7 +65,7 @@ const projectBody = document.querySelector(".current-project-body");
         renderExistingProject(project, workingProject);
     });
 
-return {workingProject}
+return { workingProject }
 
 
 }

@@ -1,14 +1,5 @@
 {
-  "devDependencies": {
-    "css-loader": "^7.1.2",
-    "html-loader": "^5.1.0",
-    "html-webpack-plugin": "^5.6.3",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.100.2",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
-  },
-  "name": "webpack-template-repo",
+  "name": "to-do-list-app",
   "version": "1.0.0",
   "description": "An Odin Project creating a To-do List App featuring an extensive feature set",
   "main": "index.js",
@@ -20,14 +11,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arminas-bartkus/webpack-template-repo.git"
+    "url": "git+https://github.com/arminas-bartkus/to-do-list-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/arminas-bartkus/webpack-template-repo/issues"
+    "url": "https://github.com/arminas-bartkus/to-do-list-app/issues"
   },
-  "homepage": "https://github.com/arminas-bartkus/webpack-template-repo#readme"
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "homepage": "https://github.com/arminas-bartkus/to-do-list-app#readme"
 }
