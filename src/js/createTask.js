@@ -1,7 +1,7 @@
 class ToDoTask {
     
     constructor(taskTitle, taskDesc, dueDate,
-        priorityLvl /* which project to add to? */) {
+        priorityLvl) {
             this.taskTitle = taskTitle;
             this.taskDesc = taskDesc;
             this.dueDate = dueDate;

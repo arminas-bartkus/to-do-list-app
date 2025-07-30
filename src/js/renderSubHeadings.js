@@ -22,12 +22,12 @@ export function renderSubHeadings(newWorkingProject) {
     addTaskBtn.innerHTML = "Add Task";
     subHeadingDiv.appendChild(addTaskBtn);
     addTaskBtn.classList.add(subHeading.title);
-    
+
     addTaskBtn.addEventListener("click", function() {
         const addTaskModal = document.querySelector(".add-task-modal");
         addTaskModal.showModal();
+        addTaskModal.dataset.subHeading = subHeading.title;
     });
-
     projectBody.append(subHeadingDiv);
     
  });
