@@ -21,7 +21,7 @@ export function renderSubHeadings(newWorkingProject) {
     const addTaskBtn = document.createElement("button");
     addTaskBtn.innerHTML = "Add Task";
     subHeadingDiv.appendChild(addTaskBtn);
-    addTaskBtn.classList.add(subHeading.title);
+    renderedSubHeading.dataset.subHeadingData = subHeading.title;
 
     addTaskBtn.addEventListener("click", function() {
         const addTaskModal = document.querySelector(".add-task-modal");

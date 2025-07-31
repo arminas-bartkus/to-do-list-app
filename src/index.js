@@ -52,8 +52,6 @@ function addListeners() {
             for (const subHeading in workingProject.subHeadings) {
                 
                 const subHeadingToCheck = workingProject.subHeadings[subHeading].title;
-                    console.log(workingProject.subHeadings[subHeading].title)
-
 
                 if (subHeadingToCheck === subHeadingtoAppend) {
                     workingProject.subHeadings[subHeading].tasks.push(newTask);
@@ -61,11 +59,8 @@ function addListeners() {
 
 
             }
-
-            workingProject.tasks.push(newTask);
-
             renderTasks(workingProject)
-                
+            // addTaskModal.dataset.subHeading = "";
             });
 
 }
