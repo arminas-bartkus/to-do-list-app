@@ -1,11 +1,12 @@
 class ToDoTask {
     
     constructor(taskTitle, taskDesc, dueDate,
-        priorityLvl) {
+        priorityLvl, isComplete = false) {
             this.taskTitle = taskTitle;
             this.taskDesc = taskDesc;
             this.dueDate = dueDate;
             this.priorityLvl = priorityLvl;
+            this.isComplete = isComplete;
         };
 };
 

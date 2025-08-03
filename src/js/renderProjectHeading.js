@@ -3,6 +3,7 @@ import { createSubHeading } from "./createSubHeading";
 import { renderSubHeadings } from "./renderSubHeadings"
 import { renderExistingProject } from "./renderExistingProject"
 import { createProjectCard } from "./createProjectCard";
+import { saveData } from "./saveData";
 
 
 
@@ -13,6 +14,7 @@ let workingProject
 
 const projectBody = document.querySelector(".current-project-body");
 
+console.log(goToProjectButtonPressed)
     currentProjects.forEach((project) => {
         if (project.projectTitle === title) {
             workingProject = project;
@@ -38,6 +40,9 @@ const projectBody = document.querySelector(".current-project-body");
        
        // create Subheading
         const createdSubHeading = createSubHeading(enteredSubheading);
+        
+        saveData();
+        
         workingProject.subHeadings.push(createdSubHeading);
 
         renderSubHeadings(workingProject);

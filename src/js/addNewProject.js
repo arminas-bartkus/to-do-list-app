@@ -9,7 +9,6 @@ export function addNewProject(title) {
     const newProject = {
         projectTitle: newProjectTitle.title,
         subHeadings: [],
-        tasks: [],
         
     }
 

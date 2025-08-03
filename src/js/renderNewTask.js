@@ -1,3 +1,6 @@
+import { saveData } from "./saveData";
+import { toggleCompletion } from "./toggleCompletion";
+
 export function renderNewTask(workingProject, workingSubHeading) {
 
     workingProject.subHeadings.forEach(subHeading => {
@@ -14,6 +17,18 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
+            
+
+            // repeated code, make function?
+
+            const taskCompletedCheckbox = document.createElement("input");
+            taskCompletedCheckbox.setAttribute("type", "checkbox");
+
+            taskCompletedCheckbox.addEventListener("change", function() {
+                toggleCompletion(taskToRender);
+            });
+
+
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete"
@@ -36,10 +51,11 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
+            taskDiv.appendChild(taskCompletedCheckbox);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
 
-
+            saveData();
         }
     });
  

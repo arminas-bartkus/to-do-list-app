@@ -6,18 +6,28 @@ import { createTask } from "./js/createTask";
 import { renderProjectHeading } from "./js/renderProjectHeading"
 import { renderNewTask } from "./js/renderNewTask"
 import { workingProject } from "./js/renderSubHeadings";
+import { loadData } from "./js/loadData";
+import { clearLocalStorage } from "./js/clearLocalStorage";
 
 
 let currentProjects = [];
 
 (function() {
 
+
+    currentProjects = loadData();
+    
+    if (currentProjects === undefined) {
+        currentProjects = [];
+    } 
+
 function addListeners() {
 
     // buttons
     
     const addNewProjectBtn = document.querySelector(".add-project-btn");
-    const confirmAddTaskBtn = document.querySelector(".confirm-task-button")
+    const confirmAddTaskBtn = document.querySelector(".confirm-task-button");
+    const clearLocalStorageBtn = document.querySelector(".clear-storage");
 
     const addTaskModal = document.querySelector(".add-task-modal");
 
@@ -27,7 +37,13 @@ function addListeners() {
     const taskTitleInput = document.querySelector("#taskTitle");
     const taskDescInput = document.querySelector("#taskDesc");
     const taskDueDateInput = document.querySelector("#taskDueDate");
-    const taskPriorityLvlInput = document.querySelector("#taskPriorityLvl"); 
+    const taskPriorityLvlInput = document.querySelector("#taskPriorityLvl");
+    
+    
+    clearLocalStorageBtn.addEventListener("click", function() {
+        clearLocalStorage()
+       
+    });
 
     addNewProjectBtn.addEventListener("click", function() {
 
@@ -61,7 +77,6 @@ function addListeners() {
 
             }
             renderNewTask(workingProject, subHeadingtoAppend)
-            // addTaskModal.dataset.subHeading = "";
             });
 
 }

@@ -1,3 +1,6 @@
+import { currentProjects } from "..";
+import { toggleCompletion } from "./toggleCompletion";
+
 
 export function renderTasks(workingProject) {
 
@@ -30,6 +33,15 @@ let currentSubHeadingDOMElement
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
+            
+            
+            const taskCompletedCheckbox = document.createElement("input");
+            taskCompletedCheckbox.setAttribute("type", "checkbox");
+
+
+            taskCompletedCheckbox.addEventListener("change", function() {
+                toggleCompletion(task);
+            });
 
             renderedTaskTitle.innerHTML = task.taskTitle;
             renderedTaskDesc.innerHTML = task.taskDesc;
@@ -41,12 +53,11 @@ let currentSubHeadingDOMElement
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
+            taskDiv.appendChild(taskCompletedCheckbox);
+
             currentSubHeadingDOMElement.appendChild(taskDiv)
             
         });
-
-
-        
 
     });
 
