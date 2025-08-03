@@ -18,6 +18,14 @@ let currentSubHeadingDOMElement
             const DOMIdentifier = task.taskTitle.toString();
             taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
 
+            const deleteTaskBtn = document.createElement("button");
+            deleteTaskBtn.innerHTML = "Delete"
+
+            deleteTaskBtn.addEventListener("click", function(){
+                this.parentElement.remove();
+            })
+
+
             const renderedTaskTitle = document.createElement("h3");
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
@@ -32,7 +40,7 @@ let currentSubHeadingDOMElement
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
-
+            taskDiv.appendChild(deleteTaskBtn);
             currentSubHeadingDOMElement.appendChild(taskDiv)
             
         });

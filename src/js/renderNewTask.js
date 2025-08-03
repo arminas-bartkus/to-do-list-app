@@ -15,15 +15,27 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
 
+            const deleteTaskBtn = document.createElement("button");
+            deleteTaskBtn.innerHTML = "Delete"
+
+            deleteTaskBtn.addEventListener("click", function(){
+                this.parentElement.remove();
+            })
+
+
+
             renderedTaskTitle.innerHTML = taskToRender.taskTitle;
             renderedTaskDesc.innerHTML = taskToRender.taskDesc;
             renderedTaskDueDate.innerHTML = taskToRender.dueDate;
             renderedTaskPriorityLvl.innerHTML = taskToRender.priorityLvl;
 
+            
+
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
+            taskDiv.appendChild(deleteTaskBtn);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
 
