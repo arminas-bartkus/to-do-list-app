@@ -1,5 +1,3 @@
-import { currentProjects } from "../index";
-import { renderProjectHeading } from "./renderProjectHeading";
 
 let workingProject
 
