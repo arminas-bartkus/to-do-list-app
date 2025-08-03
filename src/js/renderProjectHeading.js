@@ -1,20 +1,21 @@
 import { currentProjects } from "../index";
 import { createSubHeading } from "./createSubHeading";
 import { renderSubHeadings } from "./renderSubHeadings"
-import { renderExistingProject } from "./renderExistingProject"
 import { createProjectCard } from "./createProjectCard";
 import { saveData } from "./saveData";
+import { cleanProjectBody } from "./cleanProjectBody";
 
 
 
 
 export function renderProjectHeading(title, goToProjectButtonPressed) {
 
-let workingProject
+    let workingProject
 
-const projectBody = document.querySelector(".current-project-body");
+    const projectBody = document.querySelector(".current-project-body");
 
-console.log(goToProjectButtonPressed)
+    cleanProjectBody()
+
     currentProjects.forEach((project) => {
         if (project.projectTitle === title) {
             workingProject = project;
