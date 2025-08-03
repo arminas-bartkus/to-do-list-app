@@ -1,5 +1,6 @@
 import { saveData } from "./saveData";
 import { toggleCompletion } from "./toggleCompletion";
+import { updateCompletionBar } from "./updateCompletionBar";
 
 export function renderNewTask(workingProject, workingSubHeading) {
 
@@ -25,7 +26,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskCompletedCheckbox.setAttribute("type", "checkbox");
 
             taskCompletedCheckbox.addEventListener("change", function() {
-                toggleCompletion(taskToRender);
+                toggleCompletion(taskToRender, workingProject);
             });
 
 
@@ -33,8 +34,31 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete"
 
+
+            // indiv func?
             deleteTaskBtn.addEventListener("click", function(){
+             
+                const recollectedBelongingSubHeading = this.parentElement.parentElement.firstChild.textContent;
+                const recollectedTaskTitle = this.parentElement.firstChild.innerText
+                
+                workingProject.subHeadings.forEach((subHeading) => {
+
+                    if (recollectedBelongingSubHeading === subHeading.title) {
+                        subHeading.tasks.forEach(task => {
+                            if (task.taskTitle === recollectedTaskTitle) {
+        
+                                const taskToDeleteIndex = subHeading.tasks.indexOf(task)
+                                subHeading.tasks.splice(taskToDeleteIndex, 1);
+                            };
+                        });
+                    };
+
+                });
+            
                 this.parentElement.remove();
+                updateCompletionBar(workingProject);
+
+
             })
 
 
@@ -54,7 +78,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(taskCompletedCheckbox);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
-
+            updateCompletionBar(workingProject);
             saveData();
         }
     });

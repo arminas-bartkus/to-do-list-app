@@ -22,7 +22,6 @@ export function createProjectCard(workingProject) {
             // bool to prevent project card creation on go to Project Btn
             
             let goToProjectButtonPressed = true;
-            console.log(currentProjects)
             renderExistingProject(projectName, workingProject, goToProjectButtonPressed);
         })
 

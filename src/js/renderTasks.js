@@ -25,7 +25,32 @@ let currentSubHeadingDOMElement
             deleteTaskBtn.innerHTML = "Delete"
 
             deleteTaskBtn.addEventListener("click", function(){
+                
+
+                // Finds the subheading where task to delete is located
+                // finds the title of the task on dom to delete 
+                // uses title to identify array element with that title
+                // deletes task from array and dom 
+
+                const recollectedBelongingSubHeading = this.parentElement.parentElement.firstChild.textContent;
+                const recollectedTaskTitle = this.parentElement.firstChild.innerText
+                
+                workingProject.subHeadings.forEach((subHeading) => {
+
+                    if (recollectedBelongingSubHeading === subHeading.title) {
+                        subHeading.tasks.forEach(task => {
+                            if (task.taskTitle === recollectedTaskTitle) {
+        
+                                const taskToDeleteIndex = subHeading.tasks.indexOf(task)
+                                subHeading.tasks.splice(taskToDeleteIndex, 1);
+                            };
+                        });
+                    };
+
+                });
                 this.parentElement.remove();
+                updateCompletionBar(workingProject);
+
             })
 
 
@@ -40,7 +65,7 @@ let currentSubHeadingDOMElement
 
 
             taskCompletedCheckbox.addEventListener("change", function() {
-                toggleCompletion(task);
+                toggleCompletion(task, workingProject);
             });
 
             renderedTaskTitle.innerHTML = task.taskTitle;
