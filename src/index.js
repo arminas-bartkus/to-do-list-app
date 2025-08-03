@@ -8,6 +8,7 @@ import { renderNewTask } from "./js/renderNewTask"
 import { workingProject } from "./js/renderSubHeadings";
 import { loadData } from "./js/loadData";
 import { clearLocalStorage } from "./js/clearLocalStorage";
+import { renderCompletionBar } from "./js/renderCompletionBar";
 
 
 let currentProjects = [];
@@ -51,7 +52,9 @@ function addListeners() {
         const projectToAdd = addNewProject(inputtedTitle);
         currentProjects.push(projectToAdd);
         
+      
         renderProjectHeading(inputtedTitle);
+        renderCompletionBar();
     });
 
     confirmAddTaskBtn.addEventListener("click", function() {

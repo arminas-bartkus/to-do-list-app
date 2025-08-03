@@ -16,6 +16,8 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
 
     cleanProjectBody()
 
+    
+
     currentProjects.forEach((project) => {
         if (project.projectTitle === title) {
             workingProject = project;

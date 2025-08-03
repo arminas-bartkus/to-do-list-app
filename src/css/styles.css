@@ -34,3 +34,9 @@ body {
 
     border: solid purple;
 }
+
+.completion-bar {
+    align-self: end;
+    position: absolute;
+    margin-top: auto;
+}

@@ -1,5 +1,5 @@
-import { currentProjects } from "..";
 import { toggleCompletion } from "./toggleCompletion";
+import { updateCompletionBar } from "./updateCompletionBar";
 
 
 export function renderTasks(workingProject) {
@@ -53,6 +53,13 @@ let currentSubHeadingDOMElement
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
+
+            if (task.isComplete) {
+                taskCompletedCheckbox.checked = true;
+            }
+
+
+
             taskDiv.appendChild(taskCompletedCheckbox);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
@@ -60,6 +67,8 @@ let currentSubHeadingDOMElement
         });
 
     });
+
+    updateCompletionBar(workingProject);
 
 
 }
