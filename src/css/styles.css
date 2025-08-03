@@ -1,7 +1,7 @@
 body {
     display: grid;
     height: 98vh;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 5fr 1fr;
 }
 
@@ -24,4 +24,13 @@ body {
     margin: 20px;
     height: 200px;
   
+}
+
+.completed-tasks-section {
+
+    
+    grid-area: 1 / 3 / 4 / 4;
+    margin: 10px;
+
+    border: solid purple;
 }
