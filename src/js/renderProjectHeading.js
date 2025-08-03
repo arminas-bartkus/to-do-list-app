@@ -2,11 +2,12 @@ import { currentProjects } from "../index";
 import { createSubHeading } from "./createSubHeading";
 import { renderSubHeadings } from "./renderSubHeadings"
 import { renderExistingProject } from "./renderExistingProject"
+import { createProjectCard } from "./createProjectCard";
 
 
 
 
-export function renderProjectHeading(title) {
+export function renderProjectHeading(title, goToProjectButtonPressed) {
 
 let workingProject
 
@@ -44,26 +45,11 @@ const projectBody = document.querySelector(".current-project-body");
 
     titleDiv.appendChild(addSubHeadingBtn);
 
-    // create go to Project button button (SHOULD BE ITS OWN FUNCTION)
+    if (!goToProjectButtonPressed) {
+        createProjectCard(workingProject);
+    }
 
-    const projectListBody = document.querySelector(".project-list-body");
-    
-    const newProjectCard = document.createElement("div");
-    newProjectCard.classList.add("project-card");
-
-    const goToProjectBtn = document.createElement("button");
-    goToProjectBtn.innerHTML = "Open Project";
-    goToProjectBtn.classList.add(workingProject.projectTitle);
-
-
-    projectListBody.appendChild(newProjectCard);
-    newProjectCard.appendChild(goToProjectBtn);
-
-    goToProjectBtn.addEventListener("click", function() {
-
-        const project = goToProjectBtn.classList.value;
-        renderExistingProject(project, workingProject);
-    });
+    goToProjectButtonPressed = false;
 
 return { workingProject }
 
