@@ -4,8 +4,9 @@ import "./css/reset.css"
 import { addNewProject } from "./js/addNewProject";
 import { createTask } from "./js/createTask";
 import { renderProjectHeading } from "./js/renderProjectHeading"
-import { renderTasks } from "./js/renderTasks"
+import { renderNewTask } from "./js/renderNewTask"
 import { workingProject } from "./js/renderSubHeadings";
+
 
 let currentProjects = [];
 
@@ -59,7 +60,7 @@ function addListeners() {
 
 
             }
-            renderTasks(workingProject)
+            renderNewTask(workingProject, subHeadingtoAppend)
             // addTaskModal.dataset.subHeading = "";
             });
 
