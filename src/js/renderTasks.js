@@ -1,6 +1,7 @@
 import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
 import { updateTimeLeft } from "./updateTimeLeft";
+import { updateTaskPriority } from "./updateTaskPriority"
 
 export function renderTasks(workingProject) {
 
@@ -72,6 +73,8 @@ let currentSubHeadingDOMElement
             renderedTaskDesc.innerHTML = task.taskDesc;
             renderedTaskDueDate.innerHTML = task.dueDate;
             renderedTaskPriorityLvl.innerHTML = task.priorityLvl;
+
+            updateTaskPriority(taskDiv, task);
             
             
             

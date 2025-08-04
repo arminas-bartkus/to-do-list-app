@@ -2,6 +2,8 @@ import { saveData } from "./saveData";
 import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
 import { updateTimeLeft } from "./updateTimeLeft"
+import { updateTaskPriority } from "./updateTaskPriority"
+
 
 export function renderNewTask(workingProject, workingSubHeading) {
 
@@ -67,6 +69,8 @@ export function renderNewTask(workingProject, workingSubHeading) {
             renderedTaskDesc.innerHTML = taskToRender.taskDesc;
             renderedTaskDueDate.innerHTML = taskToRender.dueDate;
             renderedTaskPriorityLvl.innerHTML = taskToRender.priorityLvl;
+
+            updateTaskPriority(taskDiv, taskToRender);
 
 
             // checks to see that due date inputted
