@@ -1,6 +1,7 @@
 import { saveData } from "./saveData";
 import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
+import { updateTimeLeft } from "./updateTimeLeft"
 
 export function renderNewTask(workingProject, workingSubHeading) {
 
@@ -10,7 +11,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const currentSubHeadingDOMElement = document.querySelector("h2[data-sub-heading-data = "  + "'" + subHeading.title + "'" + "]");
 
             const workingTaskList = subHeading.tasks; 
-            const taskToRender = workingTaskList[workingTaskList.length -1];
+            const taskToRender = workingTaskList[workingTaskList.length - 1];
 
             const taskDiv = document.createElement("div");
             
@@ -18,6 +19,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
+            const renderedTimeLeft = document.createElement("p");
             
 
             // repeated code, make function?
@@ -61,13 +63,20 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             })
 
-
-
             renderedTaskTitle.innerHTML = taskToRender.taskTitle;
             renderedTaskDesc.innerHTML = taskToRender.taskDesc;
             renderedTaskDueDate.innerHTML = taskToRender.dueDate;
             renderedTaskPriorityLvl.innerHTML = taskToRender.priorityLvl;
 
+
+            // checks to see that due date inputted
+
+            if (taskToRender.dueDate === "") {
+                renderedTimeLeft.innerText = updateTimeLeft();
+            }
+            else {
+                renderedTimeLeft.innerText = updateTimeLeft(taskToRender.dueDate);
+            }
             
 
             taskDiv.appendChild(renderedTaskTitle);
@@ -76,6 +85,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
             taskDiv.appendChild(taskCompletedCheckbox);
+            taskDiv.appendChild(renderedTimeLeft);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
             updateCompletionBar(workingProject);

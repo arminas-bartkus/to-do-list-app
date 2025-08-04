@@ -11,6 +11,7 @@ import { clearLocalStorage } from "./js/clearLocalStorage";
 import { renderCompletionBar } from "./js/renderCompletionBar";
 
 
+
 let currentProjects = [];
 
 (function() {
@@ -39,6 +40,10 @@ function addListeners() {
     const taskDescInput = document.querySelector("#taskDesc");
     const taskDueDateInput = document.querySelector("#taskDueDate");
     const taskPriorityLvlInput = document.querySelector("#taskPriorityLvl");
+
+    // create min date as today
+
+    taskDueDateInput.min = new Date().toISOString().split("T")[0];
     
     
     clearLocalStorageBtn.addEventListener("click", function() {

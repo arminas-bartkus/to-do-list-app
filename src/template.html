@@ -34,16 +34,16 @@
     <dialog mode = "modal" class = "add-task-modal">
 
         <label for="taskTitle">Task Title:</label>
-        <input type="text" name="taskTitleInput" id="taskTitle">
+        <input type="text" name="taskTitleInput" id="taskTitle" required minlength="3">
 
          <label for="taskDesc">Task Desc:</label>
         <input type="textarea" name="taskDescInput" id="taskDesc">
         
          <label for="taskDueDate">Task Due Date:</label>
-        <input type="text" name="taskDueDateInput" id="taskDueDate">
+        <input type="date" name="taskDueDateInput" id="taskDueDate" required>
 
-         <label for="taskPriorityLvl">Task Priority Level:</label>
-        <input type="number" name="taskPrioLvlInput" id="taskPriorityLvl">
+         <label for="taskPriorityLvl">Task Priority Level: </label>
+        <input type="number" name="taskPrioLvlInput" id="taskPriorityLvl" placeholder="1 = urgent, 3 = Low-priority" min = "1" max = "3" step = "1">
 
         <button type="button" class = "confirm-task-button">Add Task</button>
 

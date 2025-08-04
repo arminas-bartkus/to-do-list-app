@@ -1,6 +1,6 @@
 import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
-
+import { updateTimeLeft } from "./updateTimeLeft";
 
 export function renderTasks(workingProject) {
 
@@ -58,11 +58,11 @@ let currentSubHeadingDOMElement
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
-            
+            const renderedTimeLeft = document.createElement("p");
             
             const taskCompletedCheckbox = document.createElement("input");
             taskCompletedCheckbox.setAttribute("type", "checkbox");
-
+             
 
             taskCompletedCheckbox.addEventListener("change", function() {
                 toggleCompletion(task, workingProject);
@@ -72,12 +72,25 @@ let currentSubHeadingDOMElement
             renderedTaskDesc.innerHTML = task.taskDesc;
             renderedTaskDueDate.innerHTML = task.dueDate;
             renderedTaskPriorityLvl.innerHTML = task.priorityLvl;
+            
+            
+            
+            // renderedTimeLeft.innerText = updateTimeLeft(task.dueDate);
+
+            if (task.dueDate === "") {
+                renderedTimeLeft.innerText = updateTimeLeft();
+            }
+            else {
+                renderedTimeLeft.innerText = updateTimeLeft(task.dueDate);
+            }
+
 
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
+            taskDiv.appendChild(renderedTimeLeft);
 
             if (task.isComplete) {
                 taskCompletedCheckbox.checked = true;
