@@ -83,8 +83,6 @@ let currentSubHeadingDOMElement
             else {
                 renderedTimeLeft.innerText = updateTimeLeft(task.dueDate);
             }
-
-
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
@@ -97,16 +95,12 @@ let currentSubHeadingDOMElement
                 taskCompletedCheckbox.checked = true;
             }
 
-            taskDiv.addEventListener("click", function() {
+            renderedTaskTitle.addEventListener("click", function() {
                 editTask(taskDiv, task);
-                updateTaskPriority(taskDiv, task);
             });
-
-
             currentSubHeadingDOMElement.appendChild(taskDiv)
-            
-        });
 
+        });
     });
 
     updateCompletionBar(workingProject);

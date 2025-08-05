@@ -91,7 +91,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
 
-            taskDiv.addEventListener("click", function() {
+            renderedTaskTitle.addEventListener("click", function() {
                 editTask(taskDiv, taskToRender)
             });
 

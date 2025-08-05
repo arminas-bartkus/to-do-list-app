@@ -1,4 +1,3 @@
 If subheadings are the same, task deletion and creation is duplicated, fix?
 
-simplify functions
-
+// error thrown if you edit a task and dont input a date
