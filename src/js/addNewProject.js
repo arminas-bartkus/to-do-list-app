@@ -10,6 +10,9 @@ export function addNewProject(title) {
         projectTitle: newProjectTitle.title,
         subHeadings: [],
         
+        addNewProject1() {
+            console.log(newProject.projectTitle)
+        }
     }
 
     return newProject

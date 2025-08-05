@@ -17,6 +17,7 @@ let editTaskModal
 
 (function() {
 
+    
 
     currentProjects = loadData();
     
@@ -57,6 +58,8 @@ function addListeners() {
 
         const inputtedTitle = prompt("Enter Project Title:", "Default")
         const projectToAdd = addNewProject(inputtedTitle);
+
+        projectToAdd.addNewProject1();
         currentProjects.push(projectToAdd);
         
       
