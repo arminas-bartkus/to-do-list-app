@@ -3,7 +3,7 @@ import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
 import { updateTimeLeft } from "./updateTimeLeft"
 import { updateTaskPriority } from "./updateTaskPriority"
-
+import { editTask } from "./editTask"
 
 export function renderNewTask(workingProject, workingSubHeading) {
 
@@ -91,7 +91,14 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
 
+            taskDiv.addEventListener("click", function() {
+                editTask(taskDiv, taskToRender)
+            });
+
+
             currentSubHeadingDOMElement.appendChild(taskDiv)
+
+
             updateCompletionBar(workingProject);
             saveData();
         }

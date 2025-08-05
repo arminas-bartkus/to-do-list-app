@@ -2,6 +2,7 @@ import { toggleCompletion } from "./toggleCompletion";
 import { updateCompletionBar } from "./updateCompletionBar";
 import { updateTimeLeft } from "./updateTimeLeft";
 import { updateTaskPriority } from "./updateTaskPriority"
+import { editTask } from "./editTask";
 
 export function renderTasks(workingProject) {
 
@@ -76,10 +77,6 @@ let currentSubHeadingDOMElement
 
             updateTaskPriority(taskDiv, task);
             
-            
-            
-            // renderedTimeLeft.innerText = updateTimeLeft(task.dueDate);
-
             if (task.dueDate === "") {
                 renderedTimeLeft.innerText = updateTimeLeft();
             }
@@ -93,15 +90,18 @@ let currentSubHeadingDOMElement
             taskDiv.appendChild(renderedTaskDueDate);
             taskDiv.appendChild(renderedTaskPriorityLvl);
             taskDiv.appendChild(deleteTaskBtn);
+            taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
 
             if (task.isComplete) {
                 taskCompletedCheckbox.checked = true;
             }
 
+            taskDiv.addEventListener("click", function() {
+                editTask(taskDiv, task);
+                updateTaskPriority(taskDiv, task);
+            });
 
-
-            taskDiv.appendChild(taskCompletedCheckbox);
 
             currentSubHeadingDOMElement.appendChild(taskDiv)
             

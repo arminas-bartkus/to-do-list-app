@@ -17,7 +17,6 @@ const completionBarElement = document.querySelector(".completion-bar")
 
     });
 
-
     const percentageCompletion = (completedTasks.length / totalTaskCounter) * 100;
     completionBarElement.innerHTML = "Completion % : " + percentageCompletion + "%"
 

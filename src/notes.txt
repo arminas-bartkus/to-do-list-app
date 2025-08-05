@@ -1,0 +1,4 @@
+If subheadings are the same, task deletion and creation is duplicated, fix?
+
+simplify functions
+

@@ -13,6 +13,7 @@ import { renderCompletionBar } from "./js/renderCompletionBar";
 
 
 let currentProjects = [];
+let editTaskModal
 
 (function() {
 
@@ -32,6 +33,7 @@ function addListeners() {
     const clearLocalStorageBtn = document.querySelector(".clear-storage");
 
     const addTaskModal = document.querySelector(".add-task-modal");
+    editTaskModal = document.querySelector(".edit-task-modal");
 
 
     // modal inputs
@@ -94,4 +96,4 @@ addListeners()
 
 })();
 
-export {currentProjects}
+export {currentProjects, editTaskModal}

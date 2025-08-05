@@ -49,5 +49,23 @@
 
     </dialog>
 
+    <dialog mode = "modal" class = "edit-task-modal">
+
+        <label for="edittedTaskTitle">Task Title:</label>
+        <input type="text" name="edittedTaskTitleInput" id="edittedTaskTitle" required minlength="3">
+
+        <label for="edittedTaskDesc">Task Desc:</label>
+        <input type="textarea" name="edittedTaskDescInput" id="edittedTaskDesc">
+        
+        <label for="edittedTaskDueDate">Task Due Date:</label>
+        <input type="date" name="edittedTaskDueDateInput" id="edittedTaskDueDate" required>
+
+        <label for="edittedTaskPriorityLvl">Task Priority Level: </label>
+        <input type="number" name="edittedTaskPrioLvlInput" id="edittedTaskPriorityLvl" placeholder="1 = urgent, 3 = Low-priority" min = "1" max = "3" step = "1">
+
+        <button type="button" class = "confirm-edit-task-button">Edit Task</button>
+
+    </dialog>
+
 </body>
 </html>

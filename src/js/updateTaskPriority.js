@@ -10,6 +10,8 @@ export function updateTaskPriority(taskDiv, task) {
         case "3" :
             taskDiv.setAttribute("style", "background-color: lightgreen")
             break
+        default:
+            taskDiv.setAttribute("style", "background-color: gray")
 
     }
 
