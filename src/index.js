@@ -10,74 +10,66 @@ import { loadData } from "./js/loadData";
 import { clearLocalStorage } from "./js/clearLocalStorage";
 import { renderCompletionBar } from "./js/renderCompletionBar";
 
-
-
 let currentProjects = [];
-let editTaskModal
+let editTaskModal;
 
 (function() {
-
-    
 
     currentProjects = loadData();
     
     if (currentProjects === undefined) {
         currentProjects = [];
-    } 
+    };
 
-function addListeners() {
+    function addListeners() {
 
-    // buttons
+        // buttons
     
-    const addNewProjectBtn = document.querySelector(".add-project-btn");
-    const confirmAddTaskBtn = document.querySelector(".confirm-task-button");
-    const clearLocalStorageBtn = document.querySelector(".clear-storage");
+        const addNewProjectBtn = document.querySelector(".add-project-btn");
+        const confirmAddTaskBtn = document.querySelector(".confirm-task-button");
+        const clearLocalStorageBtn = document.querySelector(".clear-storage");
 
-    const addTaskModal = document.querySelector(".add-task-modal");
-    editTaskModal = document.querySelector(".edit-task-modal");
+        const addTaskModal = document.querySelector(".add-task-modal");
+        editTaskModal = document.querySelector(".edit-task-modal");
 
+        // modal inputs
 
-    // modal inputs
+        const taskTitleInput = document.querySelector("#taskTitle");
+        const taskDescInput = document.querySelector("#taskDesc");
+        const taskDueDateInput = document.querySelector("#taskDueDate");
+        const taskPriorityLvlInput = document.querySelector("#taskPriorityLvl");
 
-    const taskTitleInput = document.querySelector("#taskTitle");
-    const taskDescInput = document.querySelector("#taskDesc");
-    const taskDueDateInput = document.querySelector("#taskDueDate");
-    const taskPriorityLvlInput = document.querySelector("#taskPriorityLvl");
+        // create min date as today
 
-    // create min date as today
-
-    taskDueDateInput.min = new Date().toISOString().split("T")[0];
+        taskDueDateInput.min = new Date().toISOString().split("T")[0];
     
     
-    clearLocalStorageBtn.addEventListener("click", function() {
-        clearLocalStorage()
-       
-    });
+        clearLocalStorageBtn.addEventListener("click", function() {
+            clearLocalStorage()
+        });
 
-    addNewProjectBtn.addEventListener("click", function() {
+        addNewProjectBtn.addEventListener("click", function() {
 
-        const inputtedTitle = prompt("Enter Project Title:", "Default")
-        const projectToAdd = addNewProject(inputtedTitle);
+            const inputtedTitle = prompt("Enter Project Title:", "Default")
+            const projectToAdd = addNewProject(inputtedTitle);
 
-        projectToAdd.addNewProject1();
-        currentProjects.push(projectToAdd);
+            currentProjects.push(projectToAdd);
         
-      
-        renderProjectHeading(inputtedTitle);
-        renderCompletionBar();
-    });
+            renderProjectHeading(inputtedTitle);
+            renderCompletionBar();
+        });
 
-    confirmAddTaskBtn.addEventListener("click", function() {
+        confirmAddTaskBtn.addEventListener("click", function() {
         
-        let subHeadingtoAppend = addTaskModal.dataset.subHeading;
+            addTaskModal.close();
+
+            let subHeadingtoAppend = addTaskModal.dataset.subHeading;
         
-        addTaskModal.close();
-        
-        const newTask = createTask(
-            taskTitleInput.value, 
-            taskDescInput.value, 
-            taskDueDateInput.value, 
-            taskPriorityLvlInput.value);
+            const newTask = createTask(
+                taskTitleInput.value, 
+                taskDescInput.value, 
+                taskDueDateInput.value, 
+                taskPriorityLvlInput.value);
 
             for (const subHeading in workingProject.subHeadings) {
                 
@@ -85,18 +77,15 @@ function addListeners() {
 
                 if (subHeadingToCheck === subHeadingtoAppend) {
                     workingProject.subHeadings[subHeading].tasks.push(newTask);
-                }
-
-
-            }
-            renderNewTask(workingProject, subHeadingtoAppend)
+                };
+            };
+            renderNewTask(workingProject, subHeadingtoAppend);
             });
+};
 
-}
-
-addListeners()
+addListeners();
 
 
 })();
 
-export {currentProjects, editTaskModal}
+export {currentProjects, editTaskModal};

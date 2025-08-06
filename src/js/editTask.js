@@ -14,6 +14,8 @@ export function editTask(renderedTaskDiv, task) {
     const taskDueDateInput = document.querySelector("#edittedTaskDueDate");
     const taskPriorityLvlInput = document.querySelector("#edittedTaskPriorityLvl");
 
+    taskDueDateInput.min = new Date().toISOString().split("T")[0];
+
     taskTitleInput.value = task.taskTitle;
     taskDescInput.value = task.taskDesc;
     taskDueDateInput.value = task.dueDate;
@@ -32,7 +34,13 @@ export function editTask(renderedTaskDiv, task) {
         renderedTaskDiv.children[1].innerText = task.taskDesc;
         renderedTaskDiv.children[2].innerText = task.dueDate;
         renderedTaskDiv.children[3].innerText = task.priorityLvl;
-        renderedTaskDiv.children[6].innerText = updateTimeLeft(task.dueDate);
+
+        if (task.dueDate === "") {
+                renderedTaskDiv.children[6].innerText = updateTimeLeft();
+            }
+        else {
+                renderedTaskDiv.children[6].innerText = updateTimeLeft(task.dueDate);
+            }
         
         updateTaskPriority(renderedTaskDiv, task)
     

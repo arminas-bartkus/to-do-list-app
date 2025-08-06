@@ -22,8 +22,6 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
             const renderedTimeLeft = document.createElement("p");
-            
-
             // repeated code, make function?
 
             const taskCompletedCheckbox = document.createElement("input");
@@ -33,13 +31,9 @@ export function renderNewTask(workingProject, workingSubHeading) {
                 toggleCompletion(taskToRender, workingProject);
             });
 
-
-
             const deleteTaskBtn = document.createElement("button");
-            deleteTaskBtn.innerHTML = "Delete"
+            deleteTaskBtn.innerHTML = "Delete";
 
-
-            // indiv func?
             deleteTaskBtn.addEventListener("click", function(){
              
                 const recollectedBelongingSubHeading = this.parentElement.parentElement.firstChild.textContent;
@@ -56,14 +50,11 @@ export function renderNewTask(workingProject, workingSubHeading) {
                             };
                         });
                     };
-
                 });
             
                 this.parentElement.remove();
                 updateCompletionBar(workingProject);
-
-
-            })
+            });
 
             renderedTaskTitle.innerHTML = taskToRender.taskTitle;
             renderedTaskDesc.innerHTML = taskToRender.taskDesc;
@@ -72,17 +63,16 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             updateTaskPriority(taskDiv, taskToRender);
 
-
             // checks to see that due date inputted
 
             if (taskToRender.dueDate === "") {
+                // throws error
                 renderedTimeLeft.innerText = updateTimeLeft();
             }
             else {
                 renderedTimeLeft.innerText = updateTimeLeft(taskToRender.dueDate);
-            }
-            
-
+            };
+    
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
@@ -92,17 +82,14 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(renderedTimeLeft);
 
             renderedTaskTitle.addEventListener("click", function() {
-                editTask(taskDiv, taskToRender)
+                editTask(taskDiv, taskToRender);
             });
 
-
-            currentSubHeadingDOMElement.appendChild(taskDiv)
-
+            currentSubHeadingDOMElement.appendChild(taskDiv);
 
             updateCompletionBar(workingProject);
-            saveData();
-        }
-    });
- 
 
-}
+            saveData();
+        };
+    });
+};

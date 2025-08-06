@@ -3,5 +3,5 @@ export function cleanProjectBody() {
 
     while (projectBody.hasChildNodes()) {
         projectBody.firstChild.remove();
-    }
-}
+    };
+};

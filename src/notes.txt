@@ -1,3 +1,5 @@
 If subheadings are the same, task deletion and creation is duplicated, fix?
 
 // error thrown if you edit a task and dont input a date
+
+// if there are 2 projects and task 2 gets edited then it will edit task 2 on both

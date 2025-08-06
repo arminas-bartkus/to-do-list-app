@@ -5,23 +5,17 @@ import { createProjectCard } from "./createProjectCard";
 import { saveData } from "./saveData";
 import { cleanProjectBody } from "./cleanProjectBody";
 
-
-
-
 export function renderProjectHeading(title, goToProjectButtonPressed) {
 
     let workingProject
-
     const projectBody = document.querySelector(".current-project-body");
 
-    cleanProjectBody()
-
-    
+    cleanProjectBody();
 
     currentProjects.forEach((project) => {
         if (project.projectTitle === title) {
             workingProject = project;
-        }
+        };
     });
     
     projectBody.classList.add(workingProject.projectTitle);
@@ -36,18 +30,15 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     titleDiv.appendChild(renderedProjectTitle);
 
     const addSubHeadingBtn = document.createElement("button");
-    addSubHeadingBtn.innerHTML = "Add SubHeading"
+    addSubHeadingBtn.innerHTML = "Add SubHeading";
     
     addSubHeadingBtn.addEventListener("click", function() {
-        const enteredSubheading = prompt("subheading?", "kitchen");
-       
-       // create Subheading
+        const enteredSubheading = prompt("Enter a subheading", "Kitchen");
         const createdSubHeading = createSubHeading(enteredSubheading);
         
         saveData();
         
         workingProject.subHeadings.push(createdSubHeading);
-
         renderSubHeadings(workingProject);
     });
 
@@ -59,7 +50,7 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
 
     goToProjectButtonPressed = false;
 
-return { workingProject }
+return { workingProject };
 
 
 }
