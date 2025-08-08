@@ -45,7 +45,6 @@ export function editTask(renderedTaskTitle, workingProject) {
 
 
     editTaskModal.showModal();
- 
-    console.log("got here")
+
 }
 
