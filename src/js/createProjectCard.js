@@ -1,6 +1,4 @@
-import { currentProjects } from "..";
 import { renderExistingProject } from "./renderExistingProject";
-// import { workingProject } from "./renderProjectHeading";
 
 export function createProjectCard(workingProject) {
 
@@ -10,7 +8,7 @@ export function createProjectCard(workingProject) {
         newProjectCard.classList.add("project-card");
 
         const goToProjectBtn = document.createElement("button");
-        goToProjectBtn.innerHTML = "Open Project"
+        goToProjectBtn.innerHTML = "Open Project";
 
         goToProjectBtn.classList.add(workingProject.projectTitle);
 
@@ -19,8 +17,8 @@ export function createProjectCard(workingProject) {
 
         goToProjectBtn.addEventListener("click", function() {
             const projectName = goToProjectBtn.classList.value;
-            // bool to prevent project card creation on go to Project Btn
             
+            // bool to prevent project card creation on go to Project Btn
             let goToProjectButtonPressed = true;
             renderExistingProject(projectName, workingProject, goToProjectButtonPressed);
         })

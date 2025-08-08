@@ -2,17 +2,15 @@ export function updateTaskPriority(taskDiv, task) {
 
     switch (task.priorityLvl) {
         case "1" :
-            taskDiv.setAttribute("style", "background-color: lightcoral")
+            taskDiv.setAttribute("style", "background-color: lightcoral");
             break
         case "2" :
-            taskDiv.setAttribute("style", "background-color: yellowgreen")
+            taskDiv.setAttribute("style", "background-color: yellowgreen");
             break
         case "3" :
-            taskDiv.setAttribute("style", "background-color: lightgreen")
+            taskDiv.setAttribute("style", "background-color: lightgreen");
             break
         default:
-            taskDiv.setAttribute("style", "background-color: gray")
-
-    }
-
+            taskDiv.setAttribute("style", "background-color: gray");
+    };
 };

@@ -6,33 +6,26 @@ import { editTask } from "./editTask";
 
 export function renderTasks(workingProject) {
 
-NodeList.prototype.forEach = Array.prototype.forEach
-
-let taskDiv
-let currentSubHeadingDOMElement
+    NodeList.prototype.forEach = Array.prototype.forEach;
+    let taskDiv;
+    let currentSubHeadingDOMElement;
 
     workingProject.subHeadings.forEach((subHeading) => {
         currentSubHeadingDOMElement = document.querySelector("h2[data-sub-heading-data = "  + "'" + subHeading.title + "'" + "]");
         
         subHeading.tasks.forEach((task) => {
-            // should these be listed items?
-
 
             taskDiv = document.createElement("div");
-            
-            const DOMIdentifier = task.taskTitle.toString();
-            taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
+            taskDiv.dataset.divIdentifier = task.taskTitle;
+
+            // const DOMIdentifier = task.taskTitle;
+            // taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
+            // taskDiv.dataset.taggg = DOMIdentifier;
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete"
 
             deleteTaskBtn.addEventListener("click", function(){
-                
-
-                // Finds the subheading where task to delete is located
-                // finds the title of the task on dom to delete 
-                // uses title to identify array element with that title
-                // deletes task from array and dom 
 
                 const recollectedBelongingSubHeading = this.parentElement.parentElement.firstChild.textContent;
                 const recollectedTaskTitle = this.parentElement.firstChild.innerText
@@ -48,13 +41,10 @@ let currentSubHeadingDOMElement
                             };
                         });
                     };
-
                 });
                 this.parentElement.remove();
                 updateCompletionBar(workingProject);
-
-            })
-
+            });
 
             const renderedTaskTitle = document.createElement("h3");
             const renderedTaskDesc = document.createElement("p");
@@ -65,7 +55,6 @@ let currentSubHeadingDOMElement
             const taskCompletedCheckbox = document.createElement("input");
             taskCompletedCheckbox.setAttribute("type", "checkbox");
              
-
             taskCompletedCheckbox.addEventListener("change", function() {
                 toggleCompletion(task, workingProject);
             });
@@ -96,14 +85,13 @@ let currentSubHeadingDOMElement
             }
 
             renderedTaskTitle.addEventListener("click", function() {
-                editTask(taskDiv, task);
-            });
-            currentSubHeadingDOMElement.appendChild(taskDiv)
 
+                editTask(this, workingProject);
+
+            });
+            
+            currentSubHeadingDOMElement.appendChild(taskDiv);
         });
     });
-
     updateCompletionBar(workingProject);
-
-
-}
+};

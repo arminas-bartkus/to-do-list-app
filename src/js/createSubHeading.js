@@ -4,7 +4,6 @@ class SubHeading {
         this.tasks = tasks;
     }
 }
-
 export function createSubHeading(title) {
     const newSubHeading = new SubHeading(title);
     return newSubHeading
