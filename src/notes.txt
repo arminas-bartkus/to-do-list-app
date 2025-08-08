@@ -1,14 +1,7 @@
 If subheadings are the same, task deletion and creation is duplicated, fix?
 
-// error thrown if you edit a task and dont input a date
-
 // if there are 2 projects and task 2 gets edited then it will edit task 2 on both
-
-// weird errors with editing tasks, investigate
-
-// make editable date min value "today"
 
 // if tasks repeat titles then edits are done to all clones. dont allow user to do this.
 
-// make the functions methods for each indivi task, subheading, project  etc.
-
+// only allow unique project, subheading, task names
