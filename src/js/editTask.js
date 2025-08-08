@@ -1,58 +1,51 @@
 import { editTaskModal } from "..";
+import { createTask } from "./createTask";
 import { updateTaskPriority } from "./updateTaskPriority";
 import { updateTimeLeft } from "./updateTimeLeft";
 
-export function editTask(renderedTaskDiv, task) {
+export function editTask(renderedTaskTitle, workingProject) {
 
-   
-    const confirmEditTaskBtn = document.querySelector(".confirm-edit-task-button");
 
-    // find input boxes 
+    let fetchedArrayTask;
+    let divToEdit = renderedTaskTitle.parentElement; 
 
-    const taskTitleInput = document.querySelector("#edittedTaskTitle");
-    const taskDescInput = document.querySelector("#edittedTaskDesc");
-    const taskDueDateInput = document.querySelector("#edittedTaskDueDate");
-    const taskPriorityLvlInput = document.querySelector("#edittedTaskPriorityLvl");
+    let subHeadingTitle = divToEdit.parentElement.dataset.subHeadingData;
 
-    taskDueDateInput.min = new Date().toISOString().split("T")[0];
+    workingProject.subHeadings.forEach(subHeading => {
 
-    taskTitleInput.value = task.taskTitle;
-    taskDescInput.value = task.taskDesc;
-    taskDueDateInput.value = task.dueDate;
-    taskPriorityLvlInput.value = task.priorityLvl;
-
-    editTaskModal.showModal();
-
-    confirmEditTaskBtn.addEventListener("click", function() {
-
-        task.taskTitle = taskTitleInput.value;
-        task.taskDesc = taskDescInput.value;
-        task.dueDate = taskDueDateInput.value;
-        task.priorityLvl = taskPriorityLvlInput.value;
-        
-        renderedTaskDiv.children[0].innerText = task.taskTitle;
-        renderedTaskDiv.children[1].innerText = task.taskDesc;
-        renderedTaskDiv.children[2].innerText = task.dueDate;
-        renderedTaskDiv.children[3].innerText = task.priorityLvl;
-
-        if (task.dueDate === "") {
-                renderedTaskDiv.children[6].innerText = updateTimeLeft();
-            }
-        else {
-                renderedTaskDiv.children[6].innerText = updateTimeLeft(task.dueDate);
-            }
-        
-        updateTaskPriority(renderedTaskDiv, task)
-    
-        editTaskModal.close();
-    
-        // just make sure original task arrays are editted correctly, (i.e. add new task
-        // edit it, check array and load page, edit existing task, try load page again,
-        // see if it stays)
-
+        if (subHeading.title === subHeadingTitle) {
+            subHeading.tasks.forEach((task) => {
+          
+                if (task.taskTitle === renderedTaskTitle.innerText) {
+                    fetchedArrayTask = createTask(task.taskTitle, task.taskDesc,
+                        task.dueDate, task.priorityLvl);
+                
+                };
+            });
+        };
     });
 
+// //     // find input boxes 
 
-        
+    let taskTitleInput = document.querySelector("#edittedTaskTitle");
+    let taskDescInput = document.querySelector("#edittedTaskDesc");
+    let taskDueDateInput = document.querySelector("#edittedTaskDueDate");
+    let taskPriorityLvlInput = document.querySelector("#edittedTaskPriorityLvl");
 
-};
+    taskTitleInput.value = fetchedArrayTask.taskTitle;
+    taskDescInput.value = fetchedArrayTask.taskDesc;
+    taskDueDateInput.value = fetchedArrayTask.dueDate;
+    taskPriorityLvlInput.value = fetchedArrayTask.priorityLvl;
+
+    editTaskModal.dataset.fetchedTaskTitle = fetchedArrayTask.taskTitle;
+    editTaskModal.dataset.fetchedTaskDesc = fetchedArrayTask.taskTitle;
+    editTaskModal.dataset.fetchedDueDate = fetchedArrayTask.dueDate;
+    editTaskModal.dataset.fetchedPrioLvl = fetchedArrayTask.priorityLvl;
+
+
+
+    editTaskModal.showModal();
+ 
+    console.log("got here")
+}
+

@@ -73,6 +73,10 @@ export function renderNewTask(workingProject, workingSubHeading) {
                 renderedTimeLeft.innerText = updateTimeLeft(taskToRender.dueDate);
             };
     
+            renderedTaskTitle.addEventListener("click", function() {
+                editTask(renderedTaskTitle, workingProject);                
+            });
+
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
@@ -81,10 +85,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
 
-            renderedTaskTitle.addEventListener("click", function() {
-                editTask(taskDiv, taskToRender);
-            });
-
+         
             currentSubHeadingDOMElement.appendChild(taskDiv);
 
             updateCompletionBar(workingProject);

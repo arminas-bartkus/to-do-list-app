@@ -16,9 +16,11 @@ export function renderTasks(workingProject) {
         subHeading.tasks.forEach((task) => {
 
             taskDiv = document.createElement("div");
-            
-            const DOMIdentifier = task.taskTitle.toString();
-            taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
+            taskDiv.dataset.divIdentifier = task.taskTitle;
+
+            // const DOMIdentifier = task.taskTitle;
+            // taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
+            // taskDiv.dataset.taggg = DOMIdentifier;
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete"
@@ -83,7 +85,9 @@ export function renderTasks(workingProject) {
             }
 
             renderedTaskTitle.addEventListener("click", function() {
-                editTask(taskDiv, task);
+
+                editTask(this, workingProject);
+
             });
             
             currentSubHeadingDOMElement.appendChild(taskDiv);
