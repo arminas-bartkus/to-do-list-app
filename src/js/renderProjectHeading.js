@@ -11,16 +11,16 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     const projectBody = document.querySelector(".current-project-body");
 
     cleanProjectBody();
-
     currentProjects.forEach((project) => {
         if (project.projectTitle === title) {
             workingProject = project;
         };
     });
     
-    projectBody.classList.add(workingProject.projectTitle);
+    const classToAdd = workingProject.projectTitle.split(" ") 
+    projectBody.classList.add(classToAdd);
 
-// render heading 
+    // render heading 
 
     const titleDiv = document.createElement("div");
     projectBody.appendChild(titleDiv);
@@ -33,13 +33,27 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     addSubHeadingBtn.innerHTML = "Add SubHeading";
     
     addSubHeadingBtn.addEventListener("click", function() {
-        const enteredSubheading = prompt("Enter a subheading", "Kitchen");
-        const createdSubHeading = createSubHeading(enteredSubheading);
         
-        saveData();
-        
-        workingProject.subHeadings.push(createdSubHeading);
-        renderSubHeadings(workingProject);
+        let subHeadingExists = false;
+        let emptyInput = false;
+        let enteredSubheading = prompt("Enter a Subtitle:", "Kitchen Cleaning");
+
+        if (enteredSubheading.length === 0) {emptyInput = true;}
+ 
+        workingProject.subHeadings.forEach((subHeading) => {
+            if (subHeading.title === enteredSubheading) {subHeadingExists = true;}
+        });
+
+        if (!subHeadingExists && !emptyInput) {
+            let createdSubHeading = createSubHeading(enteredSubheading);
+            saveData();
+            workingProject.subHeadings.push(createdSubHeading);
+            renderSubHeadings(workingProject);
+        }
+
+        if (subHeadingExists || emptyInput) {
+            alert("Subtitle exists or field is empty, cancelling...")
+        }
     });
 
     titleDiv.appendChild(addSubHeadingBtn);

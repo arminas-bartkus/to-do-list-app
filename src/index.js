@@ -51,9 +51,6 @@ let editTaskModal;
 
         // create min date as today
 
-
-        //TESTTTINGS 
-
         let divToEdit;
         let existingHeadingList = document.querySelectorAll("h3");
 
@@ -66,15 +63,29 @@ let editTaskModal;
             clearLocalStorage()
         });
 
-        addNewProjectBtn.addEventListener("click", function() {
+        addNewProjectBtn.addEventListener("click", () => {
 
-            const inputtedTitle = prompt("Enter Project Title:", "Default")
-            const projectToAdd = addNewProject(inputtedTitle);
+            let projectExists = false;
+            let emptyInput = false;
+            let inputtedTitle = prompt("Enter Project Title:", "House Cleaning");
 
-            currentProjects.push(projectToAdd);
-        
-            renderProjectHeading(inputtedTitle);
-            renderCompletionBar();
+            if (inputtedTitle.length === 0) { emptyInput = true;}
+
+            currentProjects.forEach((project) => {
+                if (project.projectTitle === inputtedTitle) {projectExists = true;}
+            });
+
+            if (projectExists === false && emptyInput === false) {
+                let projectToAdd = addNewProject(inputtedTitle);
+                currentProjects.push(projectToAdd);
+                renderProjectHeading(inputtedTitle);
+                renderCompletionBar();
+            }
+
+
+            if (projectExists || emptyInput) {
+                alert("Project Exists or Field is Empty, cancelling...")
+            }
         });
 
         confirmAddTaskBtn.addEventListener("click", function() {
@@ -82,22 +93,33 @@ let editTaskModal;
             addTaskModal.close();
 
             let subHeadingtoAppend = addTaskModal.dataset.subHeading;
-        
-            const newTask = createTask(
-                taskTitleInput.value, 
-                taskDescInput.value, 
-                taskDueDateInput.value, 
-                taskPriorityLvlInput.value);
 
             for (const subHeading in workingProject.subHeadings) {
                 
                 const subHeadingToCheck = workingProject.subHeadings[subHeading].title;
 
                 if (subHeadingToCheck === subHeadingtoAppend) {
-                    workingProject.subHeadings[subHeading].tasks.push(newTask);
+
+                    let taskExists = false;
+                    let emptyInput = false;
+                    if (taskTitleInput.value.length === 0) {emptyInput = true;}
+
+                    workingProject.subHeadings[subHeading].tasks.forEach(task => {
+                        if (task.taskTitle === taskTitleInput.value) {taskExists = true;}
+                    });
+
+                    if (!taskExists && !emptyInput) {
+                        const newTask = createTask(
+                        taskTitleInput.value, 
+                        taskDescInput.value, 
+                        taskDueDateInput.value, 
+                        taskPriorityLvlInput.value);
+                        workingProject.subHeadings[subHeading].tasks.push(newTask);
+                        renderNewTask(workingProject, subHeadingtoAppend);
+                    }
+                    else {alert("Task already exists or title field empty, cancelling...")}
                 };
             };
-            renderNewTask(workingProject, subHeadingtoAppend);
         });
         
         confirmEditTaskBtn.addEventListener("click", function() {
@@ -108,39 +130,56 @@ let editTaskModal;
                 editTaskModal.dataset.fetchedTaskDesc,
                 editTaskModal.dataset.fetchedDueDate,
                 editTaskModal.dataset.fetchedPrioLvl
-            )
+            );
 
-            let edittedArrayTask = createTask(fetchedArrayTask.taskTitle,
+            let edittedArrayTask = createTask(
+                fetchedArrayTask.taskTitle,
                 fetchedArrayTask.taskDesc, 
                 fetchedArrayTask.dueDate, 
-                fetchedArrayTask.priorityLvl)
+                fetchedArrayTask.priorityLvl
+            );
         
-                edittedArrayTask.taskTitle = editTaskTitleInput.value;
-                edittedArrayTask.taskDesc = editTaskDescInput.value;
-                edittedArrayTask.dueDate = editTaskDueDateInput.value;
-                edittedArrayTask.priorityLvl = editTaskPriorityLvlInput.value;
+            edittedArrayTask.taskTitle = editTaskTitleInput.value;
+            edittedArrayTask.taskDesc = editTaskDescInput.value;
+            edittedArrayTask.dueDate = editTaskDueDateInput.value;
+            edittedArrayTask.priorityLvl = editTaskPriorityLvlInput.value;
 
-                existingHeadingList = document.querySelectorAll("h3");
-                existingHeadingList.forEach((heading) => {
-
+            existingHeadingList = document.querySelectorAll("h3");
+            
+            existingHeadingList.forEach((heading) => {
                 if (heading.innerText === fetchedArrayTask.taskTitle) {
-                divToEdit = heading.parentElement;
+                    divToEdit = heading.parentElement;
                 };
             });
+
+            // Checking to see if the updated task already exists
+
+            let taskExists = false;
+            let emptyInput = false;
+
+            if (edittedArrayTask.taskTitle.length === 0) {emptyInput = true;};
+
+            workingProject.subHeadings.forEach((subHeading) => {
+                subHeading.tasks.forEach((task) => {
+                    if (edittedArrayTask.taskTitle = task.taskTitle) {taskExists = true;}
+                });
+            });
+
+            if (!taskExists && !emptyInput) {
 
                 divToEdit.children[0].innerText = edittedArrayTask.taskTitle;
                 divToEdit.children[1].innerText = edittedArrayTask.taskDesc;
                 divToEdit.children[2].innerText = edittedArrayTask.dueDate;
                 divToEdit.children[3].innerText = edittedArrayTask.priorityLvl;
 
-            if (edittedArrayTask.dueDate === "") {
-                divToEdit.children[6].innerText = updateTimeLeft();
-            }
-            else {
-                divToEdit.children[6].innerText = updateTimeLeft(edittedArrayTask.dueDate);
-            };
+                if (edittedArrayTask.dueDate === "") {
+                    divToEdit.children[6].innerText = updateTimeLeft();
+                }
+                else {
+                    divToEdit.children[6].innerText = updateTimeLeft(edittedArrayTask.dueDate);
+                };
 
-            updateTaskPriority(divToEdit, edittedArrayTask);
+                updateTaskPriority(divToEdit, edittedArrayTask);
 
                 workingProject.subHeadings.forEach(subHeading => {
                     subHeading.tasks.forEach((task) => {
@@ -150,20 +189,16 @@ let editTaskModal;
                             task.dueDate = edittedArrayTask.dueDate;
                             task.priorityLvl = edittedArrayTask.priorityLvl;
                             editTaskModal.close();
-
-                            // fix this
-                        }
-                    })
-    });
-
-});
-
-
-
+                        };
+                    });
+                });
+            }
+            else {alert("Task already exists, or title field empty, cancelling...")};
+            editTaskModal.close();
+        });
 };
 
 addListeners();
-
 
 })();
 

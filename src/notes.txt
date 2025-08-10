@@ -1,7 +1,1 @@
-If subheadings are the same, task deletion and creation is duplicated, fix?
-
-// if there are 2 projects and task 2 gets edited then it will edit task 2 on both
-
-// if tasks repeat titles then edits are done to all clones. dont allow user to do this.
-
-// only allow unique project, subheading, task names
+// add delete project // delete subheading buttons
