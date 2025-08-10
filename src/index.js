@@ -69,7 +69,9 @@ let editTaskModal;
             let emptyInput = false;
             let inputtedTitle = prompt("Enter Project Title:", "House Cleaning");
 
-            if (inputtedTitle.length === 0) { emptyInput = true;}
+
+
+            if (inputtedTitle === null || inputtedTitle.length === 0) { emptyInput = true;}
 
             currentProjects.forEach((project) => {
                 if (project.projectTitle === inputtedTitle) {projectExists = true;}
@@ -120,6 +122,10 @@ let editTaskModal;
                     else {alert("Task already exists or title field empty, cancelling...")}
                 };
             };
+            taskTitleInput.value = ""
+            taskDescInput.value = ""
+            taskDueDateInput.value = ""
+            taskPriorityLvlInput.value = ""
         });
         
         confirmEditTaskBtn.addEventListener("click", function() {
@@ -161,7 +167,7 @@ let editTaskModal;
 
             workingProject.subHeadings.forEach((subHeading) => {
                 subHeading.tasks.forEach((task) => {
-                    if (edittedArrayTask.taskTitle = task.taskTitle) {taskExists = true;}
+                    if (editTaskTitleInput.value === task.taskTitle) {taskExists = true;}
                 });
             });
 

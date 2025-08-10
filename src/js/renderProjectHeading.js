@@ -4,7 +4,7 @@ import { renderSubHeadings } from "./renderSubHeadings"
 import { createProjectCard } from "./createProjectCard";
 import { saveData } from "./saveData";
 import { cleanProjectBody } from "./cleanProjectBody";
-import { loadExistingProjectCards } from "./loadExistingProjectCards";
+import { renderTasks } from "./renderTasks";
 import { removeProjectCard } from "./removeLastCard";
 
 export function renderProjectHeading(title, goToProjectButtonPressed) {
@@ -36,12 +36,14 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     addSubHeadingBtn.innerHTML = "Add SubHeading";
     
     addSubHeadingBtn.addEventListener("click", function() {
+
+        
         
         let subHeadingExists = false;
         let emptyInput = false;
-        let enteredSubheading = prompt("Enter a Subtitle:", "Kitchen Cleaning");
+        let enteredSubheading = prompt("Enter a Sub Section Title:", "Kitchen Cleaning");
 
-        if (enteredSubheading.length === 0) {emptyInput = true;}
+        if (enteredSubheading === null || enteredSubheading.length === 0) {emptyInput = true;}
  
         workingProject.subHeadings.forEach((subHeading) => {
             if (subHeading.title === enteredSubheading) {subHeadingExists = true;}
@@ -51,7 +53,11 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
             let createdSubHeading = createSubHeading(enteredSubheading);
             saveData();
             workingProject.subHeadings.push(createdSubHeading);
+            cleanProjectBody() 
+
+            projectBody.appendChild(titleDiv);
             renderSubHeadings(workingProject);
+            renderTasks(workingProject);
         }
 
         if (subHeadingExists || emptyInput) {

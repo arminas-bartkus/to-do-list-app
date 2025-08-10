@@ -1,9 +1,13 @@
 export function updateCompletionBar(workingProject) {
 
+
     const completionBarElement = document.querySelector(".completion-bar");
 
+
+    // console.log(workingProject);
     let completedTasks = []
     let totalTaskCounter = 0;
+
 
     workingProject.subHeadings.forEach(subHeading => {
         subHeading.tasks.forEach((task) => {
@@ -13,6 +17,14 @@ export function updateCompletionBar(workingProject) {
             };
         });
     });
+
+
     const percentageCompletion = (completedTasks.length / totalTaskCounter) * 100;
-    completionBarElement.innerHTML = "Completion % : " + percentageCompletion + "%";
+    
+    if (percentageCompletion === undefined || percentageCompletion === NaN || percentageCompletion === null) {
+        completionBarElement.innerText = "Completion % : "
+    }
+    else {
+    completionBarElement.innerText = "Completion % : " + percentageCompletion + "%";
+    }
 };

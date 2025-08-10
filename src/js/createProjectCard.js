@@ -17,12 +17,10 @@ export function createProjectCard(workingProject) {
         projectListBody.appendChild(newProjectCard);
         newProjectCard.appendChild(goToProjectBtn);
 
-        goToProjectBtn.addEventListener("click", function() {
-            const projectName = goToProjectBtn.classList.value;
-            
+        goToProjectBtn.addEventListener("click", function() {            
             // bool to prevent project card creation on go to Project Btn
             let goToProjectButtonPressed = true;
-            renderExistingProject(projectName, workingProject, goToProjectButtonPressed);
+            renderExistingProject(workingProject.projectTitle, workingProject, goToProjectButtonPressed);
         })
 
 }
