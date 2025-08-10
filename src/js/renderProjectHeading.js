@@ -4,6 +4,8 @@ import { renderSubHeadings } from "./renderSubHeadings"
 import { createProjectCard } from "./createProjectCard";
 import { saveData } from "./saveData";
 import { cleanProjectBody } from "./cleanProjectBody";
+import { loadExistingProjectCards } from "./loadExistingProjectCards";
+import { removeProjectCard } from "./removeLastCard";
 
 export function renderProjectHeading(title, goToProjectButtonPressed) {
 
@@ -17,7 +19,8 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
         };
     });
     
-    const classToAdd = workingProject.projectTitle.split(" ") 
+    let classToAdd = workingProject.projectTitle.trim();
+    classToAdd = classToAdd.replace(/\s/g, '');
     projectBody.classList.add(classToAdd);
 
     // render heading 
@@ -56,7 +59,25 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
         }
     });
 
+    const deleteProjectBtn = document.createElement("button");
+    deleteProjectBtn.innerText = "Delete Project";
+    
+
+    deleteProjectBtn.addEventListener("click", function() {
+        cleanProjectBody();
+        currentProjects.forEach((project) => {
+            if (project.projectTitle === title) {
+                const indexOfRemovingProject = currentProjects.indexOf(project);
+                currentProjects.splice(indexOfRemovingProject, 1);
+                removeProjectCard(title);
+            }
+        });
+    });
+
+
+
     titleDiv.appendChild(addSubHeadingBtn);
+    titleDiv.appendChild(deleteProjectBtn);
 
     if (!goToProjectButtonPressed) {
         createProjectCard(workingProject);

@@ -10,8 +10,8 @@ export function createProjectCard(workingProject) {
         const goToProjectBtn = document.createElement("button");
         goToProjectBtn.innerHTML = "Open Project";
 
-        const classToAdd = workingProject.projectTitle.split(" ") 
-
+        let classToAdd = workingProject.projectTitle.trim();
+        classToAdd = classToAdd.replace(/\s/g, '');
         goToProjectBtn.classList.add(classToAdd);
 
         projectListBody.appendChild(newProjectCard);

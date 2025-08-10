@@ -1,3 +1,4 @@
+import { updateCompletionBar } from "./updateCompletionBar";
 
 let workingProject;
 
@@ -14,7 +15,7 @@ export function renderSubHeadings(newWorkingProject) {
         subHeadingDiv.appendChild(renderedSubHeading);
 
         const addTaskBtn = document.createElement("button");
-        addTaskBtn.innerHTML = "Add Task";
+        addTaskBtn.innerText = "Add Task";
         subHeadingDiv.appendChild(addTaskBtn);
         renderedSubHeading.dataset.subHeadingData = subHeading.title;
 
@@ -23,9 +24,29 @@ export function renderSubHeadings(newWorkingProject) {
             addTaskModal.showModal();
             addTaskModal.dataset.subHeading = subHeading.title;
         });
+
+        const deleteSubHeadingBtn = document.createElement("button");
+        deleteSubHeadingBtn.innerText = "Delete Sub Section";
+        subHeadingDiv.appendChild(deleteSubHeadingBtn);
+
+        deleteSubHeadingBtn.addEventListener("click", function() {
+        
+        const subHeadingDomTitle = deleteSubHeadingBtn.parentElement.firstChild.innerText;
+
+        deleteSubHeadingBtn.parentElement.remove()
+
+            workingProject.subHeadings.forEach((subHeading) => {
+                if (subHeading.title === subHeadingDomTitle) {
+                    const subHeadingToDeleteIndex = workingProject.subHeadings.indexOf(subHeading);
+                    workingProject.subHeadings.splice(subHeadingToDeleteIndex, 1);
+                    updateCompletionBar(workingProject);
+                }
+            });
+        
+        });
+
         projectBody.append(subHeadingDiv);
  });
 };
-
 export { workingProject };
 

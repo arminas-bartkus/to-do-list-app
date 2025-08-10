@@ -1,1 +1,7 @@
 // add delete project // delete subheading buttons
+
+// renders subtitles multiple times (remove first subtitle instances first)
+
+// cancel button throws error on prompt 
+
+// modal fields dont auto clear 
