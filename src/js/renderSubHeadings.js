@@ -1,4 +1,5 @@
 import { renderCompletionBar } from "./renderCompletionBar";
+import { renderTasks } from "./renderTasks";
 import { updateCompletionBar } from "./updateCompletionBar";
 
 let workingProject;
@@ -30,29 +31,24 @@ export function renderSubHeadings(newWorkingProject) {
         const deleteSubHeadingBtn = document.createElement("button");
         deleteSubHeadingBtn.innerText = "Delete Sub Section";
         subHeadingDiv.appendChild(deleteSubHeadingBtn);
+        deleteSubHeadingBtn.dataset.subHeading = subHeading.title;
 
         deleteSubHeadingBtn.addEventListener("click", function() {
         
         updateCompletionBar(workingProject);
+        deleteSubHeadingBtn.parentElement.remove();
 
-        const subHeadingDomTitle = deleteSubHeadingBtn.parentElement.firstChild.innerText;
-
-        deleteSubHeadingBtn.parentElement.remove()
-        let isSubSectionDeleted = false;
-
-
+        const subHeadingDomTitle = deleteSubHeadingBtn.dataset.subHeading;
+    
             workingProject.subHeadings.forEach((subHeading) => {
+
                 if (subHeading.title === subHeadingDomTitle) {
-                    console.log(workingProject)
                     let subHeadingToDeleteIndex = workingProject.subHeadings.indexOf(subHeading);
-                    let newProject = workingProject.subHeadings.splice(subHeadingToDeleteIndex, 1);
-                    console.log(newProject)
-                    updateCompletionBar(newProject);
+                    workingProject.subHeadings.splice(subHeadingToDeleteIndex,1); 
+                    updateCompletionBar(workingProject);
                 }
             });
-        
         });
-
 
         updateCompletionBar(workingProject);
         projectBody.append(subHeadingDiv);

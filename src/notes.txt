@@ -1,1 +1,3 @@
 // deleting sub sections doesnt edit completion bar
+
+there was a moment where both empty completion and normal completion spawned
