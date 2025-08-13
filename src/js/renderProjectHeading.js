@@ -26,14 +26,17 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     // render heading 
 
     const titleDiv = document.createElement("div");
+    titleDiv.classList.add("title-div");
     projectBody.appendChild(titleDiv);
 
     const renderedProjectTitle = document.createElement("h1");
+    renderedProjectTitle.classList.add("project-Title");
     renderedProjectTitle.innerHTML =  workingProject.projectTitle;
     titleDiv.appendChild(renderedProjectTitle);
 
     const addSubHeadingBtn = document.createElement("button");
-    addSubHeadingBtn.innerHTML = "Add SubHeading";
+    addSubHeadingBtn.innerHTML = "Add Subsection";
+    addSubHeadingBtn.classList.add("add-subheading-btn");
     
     addSubHeadingBtn.addEventListener("click", function() {
 
@@ -67,6 +70,7 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
 
     const deleteProjectBtn = document.createElement("button");
     deleteProjectBtn.innerText = "Delete Project";
+    deleteProjectBtn.classList.add("delete-project-btn")
     
 
     deleteProjectBtn.addEventListener("click", function() {

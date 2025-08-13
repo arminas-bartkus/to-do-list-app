@@ -1,6 +1,5 @@
 export function updateCompletionBar(workingProject) {
 
-    // console.log(workingProject)
     const completionBarElement = document.querySelector(".completion-bar");
 
     let completedTasks = []

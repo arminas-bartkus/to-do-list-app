@@ -175,14 +175,13 @@ let editTaskModal;
 
                 divToEdit.children[0].innerText = edittedArrayTask.taskTitle;
                 divToEdit.children[1].innerText = edittedArrayTask.taskDesc;
-                divToEdit.children[2].innerText = edittedArrayTask.dueDate;
-                divToEdit.children[3].innerText = edittedArrayTask.priorityLvl;
+                divToEdit.children[2].innerText = "Due on: " + edittedArrayTask.dueDate;
 
                 if (edittedArrayTask.dueDate === "") {
-                    divToEdit.children[6].innerText = updateTimeLeft();
+                    divToEdit.children[4].innerText = "Time Left: " + updateTimeLeft();
                 }
                 else {
-                    divToEdit.children[6].innerText = updateTimeLeft(edittedArrayTask.dueDate);
+                    divToEdit.children[4].innerText = "Time Left: " + updateTimeLeft(edittedArrayTask.dueDate);
                 };
 
                 updateTaskPriority(divToEdit, edittedArrayTask);

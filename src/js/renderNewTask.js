@@ -16,13 +16,29 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const taskToRender = workingTaskList[workingTaskList.length - 1];
 
             const taskDiv = document.createElement("div");
+            taskDiv.classList.add("task-div");
             
             const renderedTaskTitle = document.createElement("h3");
+            renderedTaskTitle.classList.add("task-title");
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
             const renderedTimeLeft = document.createElement("p");
-            // repeated code, make function?
+
+
+            // const taskLeftDiv = document.createElement("div");
+            // taskLeftDiv.classList.add("task-left-div");
+            // const taskRightDiv = document.createElement("div");
+            // taskRightDiv.classList.add("task-right-div")
+// 
+            // 
+
+
+            // not currently used
+            // taskLeftDiv.appendChild(renderedTaskTitle);
+            // taskLeftDiv.appendChild(renderedTaskDesc);
+            // taskLeftDiv.appendChild(renderedTaskDueDate);
+            // taskLeftDiv.appendChild(renderedTimeLeft);
 
             const taskCompletedCheckbox = document.createElement("input");
             taskCompletedCheckbox.setAttribute("type", "checkbox");
@@ -33,6 +49,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete";
+            deleteTaskBtn.classList.add("delete-task-btn")
 
             deleteTaskBtn.addEventListener("click", function(){
              
@@ -58,7 +75,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             renderedTaskTitle.innerHTML = taskToRender.taskTitle;
             renderedTaskDesc.innerHTML = taskToRender.taskDesc;
-            renderedTaskDueDate.innerHTML = taskToRender.dueDate;
+            renderedTaskDueDate.innerHTML = "Due Date: " + taskToRender.dueDate;
             renderedTaskPriorityLvl.innerHTML = taskToRender.priorityLvl;
 
             updateTaskPriority(taskDiv, taskToRender);
@@ -67,10 +84,10 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             if (taskToRender.dueDate === "") {
                 // throws error
-                renderedTimeLeft.innerText = updateTimeLeft();
+                renderedTimeLeft.innerText = "Time Left: " + updateTimeLeft();
             }
             else {
-                renderedTimeLeft.innerText = updateTimeLeft(taskToRender.dueDate);
+                renderedTimeLeft.innerText = "Time Left: " + updateTimeLeft(taskToRender.dueDate);
             };
     
             renderedTaskTitle.addEventListener("click", function() {
@@ -80,10 +97,9 @@ export function renderNewTask(workingProject, workingSubHeading) {
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
-            taskDiv.appendChild(renderedTaskPriorityLvl);
-            taskDiv.appendChild(deleteTaskBtn);
-            taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
+            taskDiv.appendChild(taskCompletedCheckbox);
+            taskDiv.appendChild(deleteTaskBtn);
 
          
             currentSubHeadingDOMElement.appendChild(taskDiv);

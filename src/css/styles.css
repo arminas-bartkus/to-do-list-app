@@ -1,42 +1,353 @@
+:root {
+
+
+}
+
+
+@font-face {
+    font-family: 'amatic_scregular';
+    src: url('../fonts/amaticsc-regular-webfont.woff2') format('woff2'),
+         url('../fonts/amaticsc-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'amaticbold';
+    src: url('../fonts/amatic-bold-webfont.woff2') format('woff2'),
+         url('../fonts/amatic-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 body {
     display: grid;
-    height: 98vh;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 5fr 1fr;
+    height: 96vh;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 10fr;
+    margin: 2vh;
+    gap: 30px;
+    background-color: aliceblue;
+    font-family: 'amatic_scregular';
+
+    font-weight: 100;
+    overflow: -moz-hidden-unscrollable;
+
+}
+
+h4 {
+    font-size: 15rem;
+    place-content: center;
+    align-self: center;
+    margin-top: 20%;
 }
 
 .project-list-body {
-    border: solid green;
+    padding: 0;
+    margin: 0;
     overflow-y: scroll;
- 
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px 0px gray;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: solid black 2px;
+
 }
 
 .current-project-body {
-    border: solid blue;
+
     display: flex;
     grid-area: 1 / 2 / 3 / 3;
     flex-direction: column;
+    overflow-y: scroll;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px 0px gray;
+    
+
+
 
 }
 
-.project-card {
-    border: solid red;
-    margin: 20px;
-    height: 200px;
-  
+.project-card{
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px 0px gray;
+   
+
+
+}
+
+.project-card div {
+    font-size: 2.1rem;
 }
 
 .clear-storage{
 
-    
-    grid-area: 1 / 3 / 4 / 4;
-    margin: 10px;
-
-    border: solid purple;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .completion-bar {
     align-self: end;
     position: absolute;
-    margin-top: auto;
+    margin: 15px 20px;
+   
+}
+
+.add-project-btn {
+
+   font-size: 2rem;
+   padding: 10px 15px;
+   height: min-content;
+   width: 200px;
+   border-radius: 40px;
+   border: none;
+   box-shadow: 0px 0px 10px 1px gray;
+   
+}
+
+.add-project-card {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 20px;
+}
+
+.go-to-project-card {
+    width: 80%;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+}
+
+.go-to-project-card-btn {
+    /* padding: 0% 10px; */
+    font-size: 1.5rem;
+    border-radius: 5px;
+    height: min-content;
+    box-shadow: 0px 0px 5px 0px gray;
+    border: none;
+    
+}
+
+.project-card-title {
+    font-size: 2rem;
+    padding: 10px;
+   
+}
+
+.title-div {
+    margin: 20px 20px 10px 20px;
+    display: flex;
+    gap: 40px;
+    align-items: start;
+}
+
+.subheading-div {
+    margin: 0px 30px;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+
+.subheading-btn-div {
+    position: relative;
+    height: min-content;
+    margin-left: 10px;
+  
+}
+
+.task-div {
+    padding: 5px 10px 0px 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px gray;
+}
+
+.task-title:hover {
+    color: aliceblue;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.add-task-btn, .delete-task-btn, dialog button {
+    margin: 0 5px 40px 5px;
+    
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px gray;
+    
+    font-size: 1.5rem;
+    
+}
+
+.add-subheading-btn, .delete-project-btn, .delete-subheading-btn {
+    margin: 5px 5px 10px 5px;
+    
+    border-radius: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    place-content: center;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px 0px gray;
+    border: none;
+
+}
+
+input[type = "checkbox"] {
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 1em;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;
+
+
+    position: relative;
+    top: 15px;
+    left: 15px;
+
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 10em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em#BCCCDC;
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+    width: 25%;
+    height: 70%;
+
+    border-radius: 30px;
+    background-color: aliceblue;
+    border: dashed aliceblue 5px;
+
+    font-size: 2rem;
+    overflow: hidden;
+    
+}
+
+dialog button {
+    margin-top: 30px;
+}
+
+dialog label {
+    margin-top: 5px;
+    font-size: 2.5rem;
+}
+
+
+dialog input {
+    display: flex;
+    width: 80%;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px gray;
+}
+
+dialog input:focus {
+    outline: none;
+
+}
+
+
+input[type = "textarea"] {
+    resize: both;
+}
+
+
+dialog input::placeholder {
+    font-size: 1.7rem;
+} 
+
+.delete-task-btn {
+    position:relative;
+    left: 70px;
+    top: -30px;
+    margin-bottom: 0px;
+}
+
+button {
+    font-family: 'amaticbold';
+}
+
+.modal-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-div {
+    font-size: 3rem;
+    margin-top: 0px;
+    height: fit-content;
+    
+}
+
+.title-div button {
+    align-self: center;
+    
+}
+
+.completion-bar {
+    font-size: 2.5rem;
+}
+
+.subheading-div-title {
+    font-size: 3rem;
+}
+
+button:hover {
+    background-color: rgba(175, 175, 175, 0.671);
+    cursor: pointer;
 }

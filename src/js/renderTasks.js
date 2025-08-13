@@ -16,6 +16,7 @@ export function renderTasks(workingProject) {
         subHeading.tasks.forEach((task) => {
 
             taskDiv = document.createElement("div");
+            taskDiv.classList.add("task-div")
             taskDiv.dataset.divIdentifier = task.taskTitle;
 
             // const DOMIdentifier = task.taskTitle;
@@ -24,6 +25,7 @@ export function renderTasks(workingProject) {
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete"
+            deleteTaskBtn.classList.add("delete-task-btn")
 
             deleteTaskBtn.addEventListener("click", function(){
 
@@ -47,6 +49,7 @@ export function renderTasks(workingProject) {
             });
 
             const renderedTaskTitle = document.createElement("h3");
+            renderedTaskTitle.classList.add("task-title");
             const renderedTaskDesc = document.createElement("p");
             const renderedTaskDueDate = document.createElement("p");
             const renderedTaskPriorityLvl = document.createElement("p");
@@ -61,24 +64,24 @@ export function renderTasks(workingProject) {
 
             renderedTaskTitle.innerHTML = task.taskTitle;
             renderedTaskDesc.innerHTML = task.taskDesc;
-            renderedTaskDueDate.innerHTML = task.dueDate;
+            renderedTaskDueDate.innerHTML = "Due Date: " + task.dueDate;
             renderedTaskPriorityLvl.innerHTML = task.priorityLvl;
 
             updateTaskPriority(taskDiv, task);
             
             if (task.dueDate === "") {
-                renderedTimeLeft.innerText = updateTimeLeft();
+                renderedTimeLeft.innerText = "Time Left: " + updateTimeLeft();
             }
             else {
-                renderedTimeLeft.innerText = updateTimeLeft(task.dueDate);
+                renderedTimeLeft.innerText = "Time Left: " + updateTimeLeft(task.dueDate);
             }
             taskDiv.appendChild(renderedTaskTitle);
             taskDiv.appendChild(renderedTaskDesc);
             taskDiv.appendChild(renderedTaskDueDate);
-            taskDiv.appendChild(renderedTaskPriorityLvl);
-            taskDiv.appendChild(deleteTaskBtn);
-            taskDiv.appendChild(taskCompletedCheckbox);
             taskDiv.appendChild(renderedTimeLeft);
+            taskDiv.appendChild(taskCompletedCheckbox);
+            taskDiv.appendChild(deleteTaskBtn);
+
 
             if (task.isComplete) {
                 taskCompletedCheckbox.checked = true;
@@ -94,4 +97,4 @@ export function renderTasks(workingProject) {
         });
     });
     updateCompletionBar(workingProject);
-};
+};``

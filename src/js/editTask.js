@@ -1,7 +1,6 @@
 import { editTaskModal } from "..";
 import { createTask } from "./createTask";
-import { updateTaskPriority } from "./updateTaskPriority";
-import { updateTimeLeft } from "./updateTimeLeft";
+
 
 export function editTask(renderedTaskTitle, workingProject) {
 
