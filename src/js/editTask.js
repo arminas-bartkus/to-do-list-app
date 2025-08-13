@@ -4,7 +4,6 @@ import { createTask } from "./createTask";
 
 export function editTask(renderedTaskTitle, workingProject) {
 
-
     let fetchedArrayTask;
     let divToEdit = renderedTaskTitle.parentElement; 
 

@@ -23,8 +23,6 @@ export function createProjectCard(workingProject) {
         goToProjectBtn.classList.add("go-to-project-card-btn")
 
 
-
-
         projectListBody.appendChild(newProjectCard);
         newProjectCard.appendChild(projectTitleElement);
         newProjectCard.appendChild(goToProjectBtn);

@@ -49,8 +49,6 @@ let editTaskModal;
         let editTaskDueDateInput = document.querySelector("#edittedTaskDueDate");
         let editTaskPriorityLvlInput = document.querySelector("#edittedTaskPriorityLvl");
 
-        // create min date as today
-
         let divToEdit;
         let existingHeadingList = document.querySelectorAll("h3");
 

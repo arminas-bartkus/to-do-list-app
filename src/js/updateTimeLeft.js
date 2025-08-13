@@ -5,7 +5,7 @@ export function updateTimeLeft(date) {
     let timeLeft;
 
     if (date === undefined) {
-        timeLeft = "Error"
+        timeLeft = "Error";
     }
     else {
         const dueDate = new Date(date);

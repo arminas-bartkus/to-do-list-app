@@ -25,21 +25,6 @@ export function renderNewTask(workingProject, workingSubHeading) {
             const renderedTaskPriorityLvl = document.createElement("p");
             const renderedTimeLeft = document.createElement("p");
 
-
-            // const taskLeftDiv = document.createElement("div");
-            // taskLeftDiv.classList.add("task-left-div");
-            // const taskRightDiv = document.createElement("div");
-            // taskRightDiv.classList.add("task-right-div")
-// 
-            // 
-
-
-            // not currently used
-            // taskLeftDiv.appendChild(renderedTaskTitle);
-            // taskLeftDiv.appendChild(renderedTaskDesc);
-            // taskLeftDiv.appendChild(renderedTaskDueDate);
-            // taskLeftDiv.appendChild(renderedTimeLeft);
-
             const taskCompletedCheckbox = document.createElement("input");
             taskCompletedCheckbox.setAttribute("type", "checkbox");
 
@@ -49,12 +34,12 @@ export function renderNewTask(workingProject, workingSubHeading) {
 
             const deleteTaskBtn = document.createElement("button");
             deleteTaskBtn.innerHTML = "Delete";
-            deleteTaskBtn.classList.add("delete-task-btn")
+            deleteTaskBtn.classList.add("delete-task-btn");
 
             deleteTaskBtn.addEventListener("click", function(){
              
                 const recollectedBelongingSubHeading = this.parentElement.parentElement.firstChild.textContent;
-                const recollectedTaskTitle = this.parentElement.firstChild.innerText
+                const recollectedTaskTitle = this.parentElement.firstChild.innerText;
                 
                 workingProject.subHeadings.forEach((subHeading) => {
 
@@ -62,7 +47,7 @@ export function renderNewTask(workingProject, workingSubHeading) {
                         subHeading.tasks.forEach(task => {
                             if (task.taskTitle === recollectedTaskTitle) {
         
-                                const taskToDeleteIndex = subHeading.tasks.indexOf(task)
+                                const taskToDeleteIndex = subHeading.tasks.indexOf(task);
                                 subHeading.tasks.splice(taskToDeleteIndex, 1);
                             };
                         });

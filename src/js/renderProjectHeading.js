@@ -40,8 +40,6 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
     
     addSubHeadingBtn.addEventListener("click", function() {
 
-        
-        
         let subHeadingExists = false;
         let emptyInput = false;
         let enteredSubheading = prompt("Enter a Sub Section Title:", "Kitchen Cleaning");
@@ -80,11 +78,9 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
                 const indexOfRemovingProject = currentProjects.indexOf(project);
                 currentProjects.splice(indexOfRemovingProject, 1);
                 removeProjectCard(title);
-            }
+            };
         });
     });
-
-
 
     titleDiv.appendChild(addSubHeadingBtn);
     titleDiv.appendChild(deleteProjectBtn);
@@ -95,10 +91,9 @@ export function renderProjectHeading(title, goToProjectButtonPressed) {
 
     goToProjectButtonPressed = false;
 
-return { workingProject };
+    return { workingProject };
 
-
-}
+};
 
 
 

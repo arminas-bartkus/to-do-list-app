@@ -16,16 +16,12 @@ export function renderTasks(workingProject) {
         subHeading.tasks.forEach((task) => {
 
             taskDiv = document.createElement("div");
-            taskDiv.classList.add("task-div")
+            taskDiv.classList.add("task-div");
             taskDiv.dataset.divIdentifier = task.taskTitle;
 
-            // const DOMIdentifier = task.taskTitle;
-            // taskDiv.setAttribute("dataDOMIdentifier", DOMIdentifier);
-            // taskDiv.dataset.taggg = DOMIdentifier;
-
             const deleteTaskBtn = document.createElement("button");
-            deleteTaskBtn.innerHTML = "Delete"
-            deleteTaskBtn.classList.add("delete-task-btn")
+            deleteTaskBtn.innerHTML = "Delete";
+            deleteTaskBtn.classList.add("delete-task-btn");
 
             deleteTaskBtn.addEventListener("click", function(){
 
@@ -97,4 +93,4 @@ export function renderTasks(workingProject) {
         });
     });
     updateCompletionBar(workingProject);
-};``
+};

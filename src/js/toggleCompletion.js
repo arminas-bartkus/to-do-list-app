@@ -7,4 +7,4 @@ export function toggleCompletion(taskToEdit, workingProject) {
     updateCompletionBar(workingProject);
 
     saveData();
-}
+};

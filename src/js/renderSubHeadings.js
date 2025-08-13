@@ -22,7 +22,7 @@ export function renderSubHeadings(newWorkingProject) {
 
         const addTaskBtn = document.createElement("button");
         addTaskBtn.innerText = "Add Task";
-        addTaskBtn.classList.add("add-task-btn")
+        addTaskBtn.classList.add("add-task-btn");
         btnDiv.appendChild(addTaskBtn);
         renderedSubHeading.dataset.subHeadingData = subHeading.title;
 
@@ -58,7 +58,7 @@ export function renderSubHeadings(newWorkingProject) {
 
 
         addTaskBtn.classList.add("subheading-btn-1");
-        deleteSubHeadingBtn.classList.add("subheading-btn-2")
+        deleteSubHeadingBtn.classList.add("subheading-btn-2");
 
         updateCompletionBar(workingProject);
         subHeadingDiv.appendChild(btnDiv);
