@@ -58,7 +58,7 @@ let editTaskModal;
 
     
         clearLocalStorageBtn.addEventListener("click", function() {
-            clearLocalStorage()
+            clearLocalStorage();
         });
 
         addNewProjectBtn.addEventListener("click", () => {
